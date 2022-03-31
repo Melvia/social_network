@@ -1,19 +1,20 @@
-import React from "react";
+import React, { memo } from "react";
 import { useSelector } from "react-redux";
 
-import FeedPhoto from "../FeedPhoto/FeedPhoto";
+import FeedPhoto from "../FeedPhoto";
 import {
   photoSelector,
   themeSelector,
   lastPhotoNumberSelector,
+  loadingSelector,
 } from "../../store/selectors";
 
 const Feed = () => {
   const photos = useSelector(photoSelector);
   const theme = useSelector(themeSelector);
-  const lastPhoto = useSelector(lastPhotoNumberSelector);
+  const isLoading = useSelector(loadingSelector);
 
-  if (photos.lenght === 0) {
+  if (photos.lenght === 0 && isLoading) {
     return <div>Loading...</div>;
   } else {
     return (
@@ -22,7 +23,7 @@ const Feed = () => {
           <div className="feed">
             <ul className="columnUl">
               {photos.map((photo, index) => (
-                <li key={`${photo.id}-${index + lastPhoto}`} className="li">
+                <li key={photo.id} className="li">
                   <FeedPhoto photo={photo} />
                 </li>
               ))}
@@ -34,4 +35,4 @@ const Feed = () => {
   }
 };
 
-export default Feed;
+export default memo(Feed);

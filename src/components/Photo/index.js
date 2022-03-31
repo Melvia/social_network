@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, memo } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,7 +13,7 @@ import {
 const Photo = () => {
   const currentPhoto = useSelector(currentPhotoSelector);
   const isLightTheme = useSelector(themeSelector);
-  const isLoaded = useSelector(loadingSelector);
+  const isLoading = useSelector(loadingSelector);
   const dispatch = useDispatch();
   const { id } = useParams();
 
@@ -21,14 +21,10 @@ const Photo = () => {
     dispatch(getCurrentPhoto(id));
   }, [id, dispatch]);
 
-  return currentPhoto.id && !isLoaded ? (
+  return currentPhoto.id && !isLoading ? (
     <>
       <Link to={`/#${currentPhoto.id}`} className={isLightTheme}>
-        <img
-          key={currentPhoto.id}
-          className="img-full"
-          src={currentPhoto.urls.full}
-        ></img>
+        <img className="img-full" src={currentPhoto.urls.full}></img>
       </Link>
       <a
         className="credit"
@@ -43,4 +39,4 @@ const Photo = () => {
   );
 };
 
-export default Photo;
+export default memo(Photo);

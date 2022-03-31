@@ -4,21 +4,9 @@ export const initialState = {
   loading: false,
   currentPhoto: {},
   lastPhoto: 0,
+  permission: "",
+  userAutorized: false,
+  scrollPozition: 0,
+  userProfile: {},
+  error: "",
 };
-
-/*
-  export const initialState = {
-    isLightTheme: true,
-    permission: "",
-    error: {},
-    photos: [],
-    currentPhoto: {
-      id: "",
-      urlRegular: "",
-      user: "",
-    },
-    userAutorized: false,
-    scrollPozition: 0,
-    userProfile: {},
-  };
-  */
