@@ -5,6 +5,7 @@ import {
   COUNT_LAST_PHOTO,
 } from "../action_types.js";
 import { API_KEY, PHOTO_STEPS } from "../../Utils/constants.js";
+import { useEffect } from "react";
 
 const api = createApi({
   accessKey: API_KEY,

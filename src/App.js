@@ -1,8 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Feed from "./components/Feed";
-import Photo from "./components/Photo";
-
-import Header from "./components/Header";
+import { Feed, Photo, Header } from "./components";
 
 const App = () => (
   <div className="App">

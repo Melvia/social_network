@@ -2,7 +2,7 @@ export const initialState = {
   isLightTheme: true,
   photos: [],
   loading: false,
-  currentPhoto: {},
+  currentPhoto: null,
   lastPhoto: 0,
   permission: "",
   userAutorized: false,

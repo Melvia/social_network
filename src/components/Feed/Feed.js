@@ -1,7 +1,8 @@
-import React, { memo } from "react";
-import { useSelector } from "react-redux";
+import React, { memo, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { CLEAR_CURRENT_PHOTO } from "../../store/action_types";
 
-import FeedPhoto from "../FeedPhoto";
+import FeedPhoto from "../FeedPhoto/FeedPhoto";
 import {
   photoSelector,
   themeSelector,
@@ -9,11 +10,17 @@ import {
 } from "../../store/selectors";
 
 const Feed = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({ type: CLEAR_CURRENT_PHOTO });
+  }, []);
+
   const photos = useSelector(photoSelector);
   const theme = useSelector(themeSelector);
   const isLoading = useSelector(loadingSelector);
 
-  if (photos.lenght === 0 && isLoading) {
+  if (isLoading) {
     return <div>Loading...</div>;
   } else {
     return (
@@ -22,7 +29,7 @@ const Feed = () => {
           <div className="feed">
             <ul className="columnUl">
               {photos.map((photo, index) => (
-                <li key={photo.id} className="li">
+                <li key={index} className="li">
                   <FeedPhoto photo={photo} />
                 </li>
               ))}
