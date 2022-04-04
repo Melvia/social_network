@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useCallback } from "react";
+import React, { memo, useState, useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   CLEAR_CURRENT_PHOTO,
@@ -26,10 +26,20 @@ const Feed = () => {
   }, [dispatch]);
 
   const handleScroll = () => {
-    if (window.scrollY > 0) {
-      dispatch({ type: SET_SCROLL_POSITION_Y, payload: window.scrollY });
+    if (
+      window.innerHeight + window.scrollY >
+      document.body.clientHeight - 100
+    ) {
+      downloadDataHandler();
     }
   };
+
+  //visible new component
+  useEffect(() => {
+    if (photos.length === 0) {
+      downloadDataHandler();
+    }
+  }, []);
 
   //transition to current component
   useEffect(() => {
@@ -37,39 +47,25 @@ const Feed = () => {
     window.addEventListener("scroll", handleScroll);
     window.scrollTo(0, scrollPositionY);
     return () => {
-      console.log("conponent is killed", scrollPositionY);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
-  //bottom of page handle
-  useEffect(() => {
-    if (
-      window.innerHeight + window.scrollY >
-      document.body.clientHeight - 100
-    ) {
-      downloadDataHandler();
-    }
-  }, [scrollPositionY]);
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  } else {
-    return (
-      <>
-        <div className={`container ${theme}`}>
-          <div className="feed">
-            <ul className="columnUl">
-              {photos.map((photo, index) => (
-                <li key={index} className="li">
-                  <FeedPhoto photo={photo} />
-                </li>
-              ))}
-            </ul>
-          </div>
+  return (
+    <>
+      <div className={`container ${theme}`}>
+        <div className="feed">
+          <ul className="columnUl">
+            {photos.map((photo, index) => (
+              <li key={index} className="li">
+                <FeedPhoto photo={photo} />
+              </li>
+            ))}
+          </ul>
         </div>
-      </>
-    );
-  }
+      </div>
+    </>
+  );
 };
 
 export default memo(Feed);
