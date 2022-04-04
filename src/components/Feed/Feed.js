@@ -13,6 +13,7 @@ import {
   loadingSelector,
   scrollPozitionYSelector,
 } from "../../store/selectors";
+import { PADDING_BOTTOM } from "../../Utils/constants";
 
 const Feed = () => {
   const photos = useSelector(photoSelector);
@@ -25,14 +26,10 @@ const Feed = () => {
     dispatch(getPhotos());
   }, [dispatch]);
 
-  const handleScroll = () => {
-    if (
-      window.innerHeight + window.scrollY >
-      document.body.clientHeight - 100
-    ) {
-      downloadDataHandler();
-    }
-  };
+  const isEndOfPage =
+    window.innerHeight + window.scrollY >
+    document.body.clientHeight - PADDING_BOTTOM;
+  const handleScroll = () => isEndOfPage && downloadDataHandler();
 
   //visible new component
   useEffect(() => {
@@ -46,9 +43,7 @@ const Feed = () => {
     dispatch({ type: CLEAR_CURRENT_PHOTO });
     window.addEventListener("scroll", handleScroll);
     window.scrollTo(0, scrollPositionY);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (

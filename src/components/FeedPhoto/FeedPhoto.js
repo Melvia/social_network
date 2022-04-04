@@ -6,7 +6,6 @@ import { useDispatch } from "react-redux";
 const FeedPhoto = ({ photo: { user, urls, id } }) => {
   const dispatch = useDispatch();
   const handleClick = () => {
-    console.log("handleClick");
     if (window.scrollY > 0) {
       dispatch({ type: SET_SCROLL_POSITION_Y, payload: window.scrollY });
     }
