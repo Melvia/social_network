@@ -4,6 +4,7 @@ import themeReducer from "./themeReducer";
 import lastPhotoReducer from "./ lastPhotoReducer";
 import currentPhotoReducer from "./currentPhotoReducer";
 import loadingReducer from "./loadingReducer";
+import scrollPositionYReducer from "./scrollPositionYReducer";
 
 const rootReducer = combineReducers({
   isLightTheme: themeReducer,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   lastPhoto: lastPhotoReducer,
   currentPhoto: currentPhotoReducer,
   isLoading: loadingReducer,
+  scrollPositionY: scrollPositionYReducer,
 });
 
 export default rootReducer;

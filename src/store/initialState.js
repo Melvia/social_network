@@ -6,7 +6,7 @@ export const initialState = {
   lastPhoto: 0,
   permission: "",
   userAutorized: false,
-  scrollPozition: 0,
+  scrollPozitionY: 0,
   userProfile: {},
   error: "",
 };
