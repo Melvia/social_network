@@ -7,6 +7,8 @@ import { themeSelector } from "../../store/selectors";
 import { API_KEY, REDIRECT_URI } from "../../Utils/constants";
 import { DOWNLOAD_DATA, THEME, AUTH } from "./store";
 
+import styles from "./Header.module.scss";
+
 const Header = () => {
   const theme = useSelector(themeSelector);
   const dispatch = useDispatch();
@@ -36,16 +38,37 @@ const Header = () => {
 
   return (
     <>
-      <button className={`button ${theme}`} onClick={beginAutorisation}>
-        {AUTH}
-      </button>
-      <button className={`button ${theme}`} onClick={toggleThemeHandler}>
-        {THEME}
-      </button>
+      <div className={styles.header}>
+        <div className={styles.header__logo}>Creagram</div>
+        <input type="text" placeholder="Поиск"></input>
+        <div className={styles.header__wrapper}>
+          <div className={styles.header__item}>
+            <span className="material-icons">home</span>
+          </div>
+          <div className={styles.header__item}>
+            <span className="material-icons">send</span>
+          </div>
+          <div className={styles.header__item}>
+            <span className="material-icons">explore</span>
+          </div>
+          <div className={styles.header__item}>
+            <span class="material-icons">favorite</span>
+          </div>
+          <div className={styles.header__item}>
+            <span className="material-icons">account_circle</span>
+          </div>
+        </div>
+        <button className={`button ${theme}`} onClick={beginAutorisation}>
+          {AUTH}
+        </button>
+        <button className={`button ${theme}`} onClick={toggleThemeHandler}>
+          {THEME}
+        </button>
 
-      <button className={`button ${theme}`} onClick={downloadDataHandler}>
-        {DOWNLOAD_DATA}
-      </button>
+        <button className={`button ${theme}`} onClick={downloadDataHandler}>
+          {DOWNLOAD_DATA}
+        </button>
+      </div>
     </>
   );
 };
