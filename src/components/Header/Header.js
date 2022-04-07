@@ -46,8 +46,6 @@ const Header = () => {
       <button className={`button ${theme}`} onClick={downloadDataHandler}>
         {DOWNLOAD_DATA}
       </button>
-
-      <Login />
     </>
   );
 };
