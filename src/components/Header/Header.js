@@ -61,16 +61,17 @@ const Header = () => {
         <button className={`button ${theme}`} onClick={beginAutorisation}>
           {AUTH}
         </button>
-        <button className={`button ${theme}`} onClick={toggleThemeHandler}>
-          {THEME}
-        </button>
-
-        <button className={`button ${theme}`} onClick={downloadDataHandler}>
-          {DOWNLOAD_DATA}
-        </button>
       </div>
     </>
   );
 };
 
+/*        <button className={`button ${theme}`} onClick={toggleThemeHandler}>
+          {THEME}
+        </button>
+
+        <button className={`button ${theme}`} onClick={downloadDataHandler}>
+          {DOWNLOAD_DATA}
+        </button> 
+      */
 export default memo(Header);
