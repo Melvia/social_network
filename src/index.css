@@ -10,6 +10,17 @@ body {
   box-sizing: border-box;
 }
 
+.li {
+  list-style-type: none;
+  margin: 0;
+}
+
+.columnUl {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+/*
 .root {
   width: 500px;
   overflow: hidden;
@@ -19,20 +30,9 @@ body {
   width: 500px;
   margin: auto;
 }
-.columnUl {
-  width: 100%;
-  list-style: none;
-  padding: 8px;
-  margin: 0;
 
-  display: flex;
-  flex-direction: column;
-}
 
-.li {
-  margin-bottom: 12px;
-}
-
+/*
 .img {
   position: relative;
   margin-bottom: 4px;
@@ -77,10 +77,10 @@ body {
   -moz-border-radius: 23px;
   -webkit-border-radius: 23px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5),
-    /* Exterior Shadow */ inset 0 1px rgba(255, 255, 255, 0.3),
-    /* Top light Line */ inset 0 10px rgba(255, 255, 255, 0.2),
-    /* Top Light Shadow */ inset 0 10px 20px rgba(255, 255, 255, 0.25),
-    /* Sides Light Shadow */ inset 0 -15px 30px rgba(0, 0, 0, 0.3); /* Dark Background */
+    inset 0 1px rgba(255, 255, 255, 0.3),
+    inset 0 10px rgba(255, 255, 255, 0.2),
+    inset 0 10px 20px rgba(255, 255, 255, 0.25),
+    inset 0 -15px 30px rgba(0, 0, 0, 0.3); 
   -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5),
     inset 0 1px rgba(255, 255, 255, 0.3), inset 0 10px rgba(255, 255, 255, 0.2),
     inset 0 10px 20px rgba(255, 255, 255, 0.25),
@@ -105,3 +105,4 @@ a.button:hover {
 .button.dark {
   background-color: rgb(4, 132, 155);
 }
+*/

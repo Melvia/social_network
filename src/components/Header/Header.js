@@ -29,10 +29,7 @@ const Header = () => {
   ];
 
   const beginAutorisation = () => {
-    console.log();
-    // const paramsURI = new URLSearchParams(params).toString();
     const authenticationUrl = `https://unsplash.com/oauth/authorize?client_id=${client_id}&redirect_uri=${redirect_uri}&response_type=${response_type}&scope=${scope}`;
-    console.log("authenticationUrl", authenticationUrl);
     document.location.assign(authenticationUrl);
   };
 
@@ -40,7 +37,11 @@ const Header = () => {
     <>
       <div className={styles.header}>
         <div className={styles.header__logo}>Creagram</div>
-        <input type="text" placeholder="Поиск"></input>
+        <input
+          type="text"
+          placeholder="Поиск"
+          className={styles.Header__search}
+        ></input>
         <div className={styles.header__wrapper}>
           <div className={styles.header__item}>
             <span className="material-icons">home</span>
@@ -52,7 +53,7 @@ const Header = () => {
             <span className="material-icons">explore</span>
           </div>
           <div className={styles.header__item}>
-            <span class="material-icons">favorite</span>
+            <span className="material-icons">favorite</span>
           </div>
           <div className={styles.header__item}>
             <span className="material-icons">account_circle</span>
@@ -60,6 +61,9 @@ const Header = () => {
         </div>
         <button className={`button ${theme}`} onClick={beginAutorisation}>
           {AUTH}
+        </button>
+        <button className={`button ${theme}`} onClick={downloadDataHandler}>
+          {DOWNLOAD_DATA}
         </button>
       </div>
     </>
