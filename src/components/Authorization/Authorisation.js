@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
-import { createApi } from "unsplash-js";
+import { Navigate } from "react-router-dom";
 import { API_KEY, REDIRECT_URI, SECRET_KEY } from "../../Utils/constants";
+
 import axios from "axios";
+import { PATH_PHOTO, PATH_COMMON } from "./../../Utils/paths";
 
 //https://unsplash.com/documentation#user-authentication
 
 const Authorisation = () => {
   const code = document.location.search.split(`code=`)[1];
-  console.log(code);
-  //const code = useParams();
 
   useEffect(() => {
     axios
@@ -21,15 +20,8 @@ const Authorisation = () => {
         grant_type: "authorization_code",
       })
       .then((response) => {
-        console.log(response.data.access_token);
-        //localStorage.setItem("access_token", response.data.access_token);
-        let cookie_date = new Date(); // Текущая дата и время
-        cookie_date.setTime(cookie_date.getTime() + 1000 * 60 * 24);
-
-        console.log(cookie_date);
-        document.cookie = `access_token=${encodeURIComponent(
-          response.data.access_token
-        )}; expires=${cookie_date.toGMTString()}`;
+        localStorage.setItem("token", response.data.access_token);
+        document.location.assign("/");
       })
       .catch(function (error) {
         console.log(error);
