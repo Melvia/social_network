@@ -5,7 +5,7 @@ import { toggleTheme } from "../../store/actions/toggleTheme";
 import { themeSelector } from "../../store/selectors";
 
 import { API_KEY, REDIRECT_URI } from "../../Utils/constants";
-import { DOWNLOAD_DATA, THEME, AUTH } from "./store";
+import { DOWNLOAD_DATA, THEME, AUTH, TITLE } from "./store";
 
 import styles from "./Header.module.scss";
 
@@ -36,7 +36,7 @@ const Header = () => {
   return (
     <>
       <div className={styles.header}>
-        <div className={styles.header__logo}>Creagram</div>
+        <div className={styles.header__logo}>{TITLE}</div>
         <input
           type="text"
           placeholder="Поиск"
@@ -46,11 +46,11 @@ const Header = () => {
           <div className={styles.header__item}>
             <span className="material-icons">home</span>
           </div>
-          <div className={styles.header__item}>
-            <span className="material-icons">send</span>
+          <div className={styles.header__item} onClick={beginAutorisation}>
+            <span className="material-icons">login</span>
           </div>
           <div className={styles.header__item}>
-            <span className="material-icons">explore</span>
+            <span className="material-icons">night</span>
           </div>
           <div className={styles.header__item}>
             <span className="material-icons">favorite</span>

@@ -1,7 +1,8 @@
 import { createApi } from "unsplash-js";
-import { ADD_CURRENT_PHOTO_SUCCESS, ADD_PHOTOS_LOADING } from "../action_types";
+import { ADD_CURRENT_PHOTO_SUCCESS, ADD_PHOTOS_LOADING } from "../actionTypes";
 
 import { API_KEY } from "../../Utils/constants";
+import { SET_ERROR } from "../actionTypes";
 
 const api = createApi({
   accessKey: API_KEY,
@@ -14,8 +15,11 @@ const getCurrentPhoto = (id) => (dispatch) => {
     .then((resolve) => {
       dispatch({ type: ADD_CURRENT_PHOTO_SUCCESS, payload: resolve.response });
     })
-    .catch((err) => {
-      console.log("something went wrong!");
+    .catch((error) => {
+      dispatch({
+        type: SET_ERROR,
+        payload: error.toString(),
+      });
     });
   dispatch({ type: ADD_PHOTOS_LOADING, payload: false });
 };

@@ -1,15 +1,17 @@
 import React, { memo, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { CLEAR_CURRENT_PHOTO } from "../../store/action_types";
-import Slider from "./../Slider/Slider";
+import { CLEAR_CURRENT_PHOTO } from "../../store/actionTypes";
 
 import {
   photoSelector,
   themeSelector,
   loadingSelector,
+  errorSelector,
 } from "../../store/selectors";
 
-import Card from "./../Card/Card";
+import Error from "../../components/Error/Error";
+import Card from "./../../components/Card/Card";
+import Preloader from "../../components/Preloader/Preloader";
 
 import styles from "./Feed.module.scss";
 
@@ -23,16 +25,16 @@ const Feed = () => {
   const photos = useSelector(photoSelector);
   const theme = useSelector(themeSelector);
   const isLoading = useSelector(loadingSelector);
+  const isError = useSelector(errorSelector);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Preloader />;
   } else {
     return (
-      //{`container ${theme}`}>
       <div className={styles.feed}>
-        <ul className="columnUl">
+        <ul>
           {photos.map((photo, index) => (
-            <li key={index} className="li">
+            <li key={index}>
               <Card photo={photo} />
             </li>
           ))}

@@ -1,5 +1,4 @@
-import React from "react";
-import { ADD_PHOTOS_SUCCESS } from "../action_types.js";
+import { ADD_PHOTOS_SUCCESS } from "../actionTypes.js";
 
 const photoReducer = (state = [], action) => {
   switch (action.type) {

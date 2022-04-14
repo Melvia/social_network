@@ -1,4 +1,4 @@
-import { TOGGLE_THEME } from "../action_types.js";
+import { TOGGLE_THEME } from "../actionTypes.js";
 const initial = true;
 
 const themeReducer = (state = initial, action) => {

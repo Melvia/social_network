@@ -3,19 +3,23 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { NOTES, PUBLISH, ADD_COMMENT } from "../Card/store";
+import { PATH_UNSPLASH } from "../../Utils/paths";
 
 import getCurrentPhoto from "../../store/actions/getCurrentPhoto";
 import {
   currentPhotoSelector,
   themeSelector,
   loadingSelector,
+  errorSelector,
 } from "../../store/selectors";
 import setLike from "../../store/actions/setLike";
-import deleteLike from "./../../store/actions/deleteLike";
+import deleteLike from "../../store/actions/deleteLike";
+import Preloader from "../Preloader/Preloader";
 
 import styles from "./Photo.module.scss";
 
 const Photo = () => {
+  const textError = useSelector(errorSelector);
   const currentPhoto = useSelector(currentPhotoSelector);
   const isLightTheme = useSelector(themeSelector);
   const isLoading = useSelector(loadingSelector);
@@ -33,7 +37,7 @@ const Photo = () => {
   };
 
   return !currentPhoto ? (
-    <div>Загрузка данных...</div>
+    <Preloader />
   ) : (
     <div className={styles.photo__wrapper}>
       <div className={styles.photo}>
@@ -46,7 +50,7 @@ const Photo = () => {
             <a
               className={styles.photo__userName}
               target="_blank"
-              href={`https://unsplash.com/@${currentPhoto.user.username}`}
+              href={`${PATH_UNSPLASH}/@${currentPhoto.user.username}`}
             >
               {currentPhoto.user.username}
             </a>

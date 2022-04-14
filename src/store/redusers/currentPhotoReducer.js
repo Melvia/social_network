@@ -1,7 +1,7 @@
 import {
   ADD_CURRENT_PHOTO_SUCCESS,
   CLEAR_CURRENT_PHOTO,
-} from "../action_types.js";
+} from "../actionTypes.js";
 
 const currentPhotoReducer = (state = {}, action) => {
   switch (action.type) {

@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import { API_KEY, REDIRECT_URI, SECRET_KEY } from "../../Utils/constants";
 
 import axios from "axios";
-import { PATH_PHOTO, PATH_COMMON } from "./../../Utils/paths";
+import { PATH_PHOTO, PATH_COMMON } from "../../Utils/paths";
 
 //https://unsplash.com/documentation#user-authentication
 

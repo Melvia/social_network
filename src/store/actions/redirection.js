@@ -1,1 +1,0 @@
-import { unsplash } from "./unsplash";

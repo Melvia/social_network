@@ -1,5 +1,5 @@
 import React from "react";
-import { COUNT_LAST_PHOTO } from "../action_types.js";
+import { COUNT_LAST_PHOTO } from "../actionTypes.js";
 
 const lastPhotoReducer = (state = 0, action) => {
   switch (action.type) {

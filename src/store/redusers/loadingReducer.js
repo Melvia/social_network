@@ -1,4 +1,4 @@
-import { ADD_PHOTOS_LOADING } from "../action_types.js";
+import { ADD_PHOTOS_LOADING } from "../actionTypes.js";
 const initial = false;
 
 const loadingReducer = (state = initial, action) => {
